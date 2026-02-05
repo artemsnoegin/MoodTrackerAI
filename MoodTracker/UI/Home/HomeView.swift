@@ -13,9 +13,12 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            LatestReportsView(reports: viewModel.reports,
-                                  selection: $viewModel.selectedReport)
-            
+            HStack {
+                LatestReportsView(reports: viewModel.reports,
+                                  selection: $viewModel.selectedReport) {
+                    viewModel.showCalendar()
+                }
+            }
             SelectedReportView(report: viewModel.selectedReport)
             
             Spacer()
@@ -27,10 +30,50 @@ struct HomeView: View {
         .padding()
         .background(GradientBackgroundView(color: viewModel.selectedReport.color))
         .navigationTitle("Mood Journal")
+        .toolbar {
+            toolbarContent()
+        }
         .task(viewModel.loadReports)
     }
+    
+    @ToolbarContentBuilder
+    private func toolbarContent() -> some ToolbarContent {
+        ToolbarItem {
+            Button {
+                viewModel.showInsights()
+            } label: {
+                HStack {
+                    Image(systemName: "sparkles")
+                    Text("Insights")
+                }
+                .foregroundStyle(
+                    LinearGradient(colors: [.indigo, .primary, .yellow], startPoint: .leading, endPoint: .bottomTrailing)
+                )
+            }
+            .disabled(true)
+        }
+        
+        ToolbarSpacer()
+        
+        ToolbarItem {
+            Button("", systemImage: "person.fill") {
+                viewModel.showUserSettings()
+            }
+            .disabled(true)
+        }
+    }
+    
 }
 
-
+#Preview {
+    let rs = ReportService(repository: MockRepository(type: .romanticEN))
+    let vm = HomeViewModel(reportService: rs)
+    let coordinator = Coordinator()
+    vm.coordinator = coordinator
+    
+    return NavigationStack {
+        HomeView(viewModel: vm)
+    }
+}
 
 

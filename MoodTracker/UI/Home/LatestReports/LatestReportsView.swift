@@ -10,6 +10,7 @@ import SwiftUI
 struct LatestReportsView: View {
     let reports: [Report]
     @Binding var selection: Report
+    let calendarAction: () -> Void
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -45,15 +46,20 @@ struct LatestReportsView: View {
     
     @ViewBuilder
     private func calendarButton() -> some View {
-        VStack(spacing: 8) {
-            Text("All")
-                .font(.subheadline)
-            Image(systemName: "calendar")
-                .font(.system(size: 25))
+        Button {
+            calendarAction()
+        } label: {
+            VStack(spacing: 8) {
+                Text("All")
+                    .font(.subheadline)
+                Image(systemName: "calendar")
+                    .font(.system(size: 25))
+            }
+            .tint(.primary)
+            .padding()
+            .glassEffect(.regular.interactive(),
+                         in: RoundedRectangle(cornerRadius: 20))
         }
-        .padding()
-        .glassEffect(.regular.interactive(),
-                     in: RoundedRectangle(cornerRadius: 20))
     }
 }
 

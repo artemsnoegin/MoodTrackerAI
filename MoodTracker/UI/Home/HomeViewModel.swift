@@ -37,4 +37,16 @@ class HomeViewModel: ObservableObject {
     func updateReport() {
         coordinator?.editReportFlow(with: selectedReport)
     }
+    
+    func showCalendar() {
+        coordinator?.go(to: .calendar)
+    }
+    
+    func showInsights() {
+        coordinator?.go(to: .insights)
+    }
+    
+    func showUserSettings() {
+        coordinator?.go(to: .userSettings)
+    }
 }
