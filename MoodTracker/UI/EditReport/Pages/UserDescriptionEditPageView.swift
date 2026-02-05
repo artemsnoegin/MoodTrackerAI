@@ -14,7 +14,7 @@ struct UserDescriptionEditPageView: View {
     
     var body: some View {
         VStack {
-            Text("What made you feel \(viewModel.report.title)")
+            Text("What made you feel \(viewModel.report.score?.title ?? "")")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
                 .frame(maxWidth: .infinity, alignment: .leading)
