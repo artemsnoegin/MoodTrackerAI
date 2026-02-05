@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditReportView: View {
-    let page: ReportEditPage
+    let page: EditReportPage
     
     var body: some View {
         switch page {

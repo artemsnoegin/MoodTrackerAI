@@ -32,7 +32,7 @@ class EditReportViewModel: ObservableObject {
         self.report = report
     }
     
-    func go(to page: ReportEditPage) {
+    func go(to page: EditReportPage) {
         coordinator?.go(to: .editReportView(page))
     }
     
