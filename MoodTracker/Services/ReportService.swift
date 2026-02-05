@@ -13,6 +13,8 @@ import SwiftData
 class ReportService {
     let repository: Repository
     
+    private let calendar = Calendar.current
+    
     init(repository: Repository) {
         self.repository = repository
     }
@@ -22,7 +24,6 @@ class ReportService {
     }
 
     func getLatestReports(count: Int = 7) -> [Report] {
-        let calendar = Calendar.current
         
         let now = Date()
         guard let startDate = calendar.date(byAdding: .day, value: -count, to: now)
@@ -60,6 +61,37 @@ class ReportService {
             }
         }
         
+        return result
+    }
+    
+    func getReports(from start: Date, to end: Date) -> [Report] {
+        let dates = [start] + Array(calendar.dates(
+            byAdding: .day,
+            startingAt: start,
+            in: start..<end)
+        )
+        
+        let reports = repository.fetchReports(
+            sortBy: [SortDescriptor(\.date)],
+            filterBy: #Predicate { $0.date >= start && $0.date <= end }
+        )
+        var reportsMap = [Date:Report]()
+        
+        for report in reports {
+            let normalized = calendar.startOfDay(for: report.date)
+            reportsMap[normalized] = report
+        }
+        
+        var result = [Report]()
+        
+        for date in dates {
+            let normalized = calendar.startOfDay(for: date)
+            if let report = reportsMap[normalized] {
+                result.append(report)
+            } else {
+                result.append(Report(date: normalized))
+            }
+        }
         return result
     }
 }
