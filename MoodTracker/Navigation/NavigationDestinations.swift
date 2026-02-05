@@ -6,9 +6,12 @@
 //
 
 enum NavigationDestination: Hashable {
-    case editReportView(_ page: ReportEditPage = .firstPage)
+    case editReportView(_ page: EditReportPage = .firstPage)
+    case calendar
+    case insights
+    case userSettings
 }
 
-enum ReportEditPage {
+enum EditReportPage {
     case firstPage, secondPage, thirdPage
 }

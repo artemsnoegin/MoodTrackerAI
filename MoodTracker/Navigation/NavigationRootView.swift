@@ -18,6 +18,12 @@ struct NavigationRootView<Root: View>: View {
                     switch destination {
                     case .editReportView(let page):
                         EditReportView(page: page)
+                    case .calendar:
+                        CalendarView()
+                    case .insights:
+                        EmptyView()
+                    case .userSettings:
+                        EmptyView()
                     }
                 }
         }
