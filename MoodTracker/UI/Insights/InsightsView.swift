@@ -41,7 +41,7 @@ struct InsightsView: View {
 
 
 #Preview {
-    let mock = MockRepository(type: .stableRU)
+    let mock = MockRepository(type: .cynicalEN)
     let rs = ReportService(repository: mock)
     let vm = InsightsViewModel(reportService: rs)
     InsightsView(viewModel: vm)

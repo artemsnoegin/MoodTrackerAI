@@ -22,8 +22,12 @@ struct Trend {
         icon(for: averageChange)
     }
     
-    var averagePercentage: String {
-        percentage(for: averageChange)
+    var averageTitle: String {
+        if averageChange == 0 {
+            return "stable"
+        } else {
+            return percentage(for: averageChange)
+        }
     }
     
     var averageDescription: String {
@@ -44,8 +48,12 @@ struct Trend {
         icon(for: stabilityChange)
     }
     
-    var stabilityPercentage: String {
-        percentage(for: stabilityChange)
+    var stabilityTitle: String {
+        if stabilityChange == 0 {
+            return "stable"
+        } else {
+            return percentage(for: stabilityChange)
+        }
     }
     
     var stabilityDescription: String {
@@ -59,7 +67,7 @@ struct Trend {
     }
     
     var contributionChange: Int {
-        previousScores.count - currentScores.count
+        currentScores.count - previousScores.count
     }
     
     var contributionIcon: String {

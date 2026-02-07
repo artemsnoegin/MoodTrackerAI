@@ -13,7 +13,7 @@ struct TrendsView: View {
     var body: some View {
         VStack(alignment: .leading) {
             content(
-                title: trend.averagePercentage,
+                title: trend.averageTitle,
                 description: trend.averageDescription,
                 icon: trend.averageIcon,
                 color: trend.avergageColor)
@@ -22,7 +22,7 @@ struct TrendsView: View {
                 .padding(.trailing)
 
             content(
-                title: trend.stabilityPercentage,
+                title: trend.stabilityTitle,
                 description: trend.stabilityDescription,
                 icon: trend.stabilityIcon,
                 color: trend.stabilityColor)
