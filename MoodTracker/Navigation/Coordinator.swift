@@ -22,6 +22,12 @@ class Coordinator: ObservableObject {
         return vm
     }()
     
+    lazy var insightsViewModel = {
+        let vm = InsightsViewModel(reportService: reportService)
+        vm.coordinator = self
+        return vm
+    }()
+    
     private lazy var reportService: ReportService = {
         let repository: Repository = SwiftDataRepository()
         return ReportService(repository: repository)

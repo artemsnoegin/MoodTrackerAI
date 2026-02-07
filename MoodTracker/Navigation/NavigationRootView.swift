@@ -21,7 +21,7 @@ struct NavigationRootView<Root: View>: View {
                     case .calendar:
                         CalendarView()
                     case .insights:
-                        EmptyView()
+                        InsightsView(viewModel: coordinator.insightsViewModel)
                     case .userSettings:
                         EmptyView()
                     }

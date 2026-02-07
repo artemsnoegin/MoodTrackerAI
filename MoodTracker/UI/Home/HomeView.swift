@@ -50,7 +50,6 @@ struct HomeView: View {
                     LinearGradient(colors: [.indigo, .primary, .yellow], startPoint: .leading, endPoint: .bottomTrailing)
                 )
             }
-            .disabled(true)
         }
         
         ToolbarSpacer()
