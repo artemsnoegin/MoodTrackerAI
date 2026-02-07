@@ -46,7 +46,11 @@ class MockRepository {
             score: .fair,
             userDescription: "С утра всё раздражало, даже мелочи. В голове крутилось много мыслей. Понял, что я устал."
         ),
-        // пропуск -10
+        Report(
+            date: Calendar.current.date(byAdding: .day, value: -10, to: Date())!,
+            score: .okay,
+            userDescription: "Всё очень хорошо!"
+        ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -9, to: Date())!,
             score: .okay,
@@ -64,10 +68,14 @@ class MockRepository {
         ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -6, to: Date())!,
-            score: .great,
+            score: .okay,
             userDescription: "Очень хороший день. Было ощущение, что я на своём месте. Прям захотелось планировать будущее."
         ),
-        // пропуск -5
+        Report(
+            date: Calendar.current.date(byAdding: .day, value: -5, to: Date())!,
+            score: .okay,
+            userDescription: "Всё хорошо."
+        ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -4, to: Date())!,
             score: .good,
@@ -148,11 +156,7 @@ class MockRepository {
             score: .okay,
             userDescription: "Понемногу вылезаю. Я не сломан — просто у меня такой период. Важно помнить это."
         ),
-        Report(
-            date: Calendar.current.date(byAdding: .day, value: -1, to: Date())!,
-            score: .good,
-            userDescription: "Сегодня было больше тепла. Поговорил с близким человеком и стало легче. Чувствую благодарность."
-        ),
+        // пропуск - 1
         Report(
             date: Date(),
             score: .fair,
@@ -182,11 +186,7 @@ class MockRepository {
             score: .fair,
             userDescription: "Чуть лучше. Старался делать всё медленнее. Вроде стало меньше внутреннего шума."
         ),
-        Report(
-            date: Calendar.current.date(byAdding: .day, value: -8, to: Date())!,
-            score: .okay,
-            userDescription: "Сегодня был обычный день. Без вдохновения, но и без провала. Это уже прогресс."
-        ),
+        // пропуск -8
         Report(
             date: Calendar.current.date(byAdding: .day, value: -7, to: Date())!,
             score: .okay,
@@ -259,35 +259,30 @@ class MockRepository {
         ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -6, to: Date())!,
-            score: .fair,
-            userDescription: "Mood dropped again. It’s funny how fast motivation dies when you remember the world is built on nonsense. I kept going anyway."
+            score: .great,
+            userDescription: "Great day. No big disappointments. I’ll take that kind of peace."
         ),
         // skip -5
         Report(
             date: Calendar.current.date(byAdding: .day, value: -4, to: Date())!,
-            score: .okay,
-            userDescription: "Neutral day. No big disappointments. I’ll take that kind of peace."
+            score: .great,
+            userDescription: "Another decent day! I was by myself nothing could't change it."
         ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -3, to: Date())!,
             score: .bad,
-            userDescription: "I snapped at someone. Not proud, not shocked. I’m exhausted and my social battery is basically a rumor."
+            userDescription: "Mood dropped again. It’s funny how fast motivation dies when you remember the world is built on nonsense"
         ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -2, to: Date())!,
-            score: .fair,
-            userDescription: "A bit better. I stayed quiet, avoided drama, did my tasks. Minimal damage."
+            score: .bad,
+            userDescription: "I snapped at someone. Not proud, not shocked. I’m exhausted and my social battery is basically a rumor."
         ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -1, to: Date())!,
-            score: .good,
-            userDescription: "Actually had a few moments of calm. I even laughed once. Maybe I’m not completely dead inside."
+            score: .bad,
+            userDescription: "I'm too tired for this..."
         ),
-        Report(
-            date: Date(),
-            score: .okay,
-            userDescription: "Not a bad day, not a good one. I’m just here, collecting hours. Tomorrow will probably be the same, and that’s fine."
-        )
     ]
     
     private var romanticEN: Set<Report> = [
@@ -335,12 +330,12 @@ class MockRepository {
         ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -3, to: Date())!,
-            score: .okay,
+            score: .good,
             userDescription: "I’m learning to be gentle with myself. I did small things, slowly. It wasn’t magical, but it was real."
         ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -2, to: Date())!,
-            score: .good,
+            score: .great,
             userDescription: "I felt grateful today. I noticed how much love exists in ordinary moments. Even the air felt kinder."
         ),
         Report(
@@ -350,7 +345,7 @@ class MockRepository {
         ),
         Report(
             date: Date(),
-            score: .good,
+            score: .great,
             userDescription: "Today was peaceful. I’m not rushing. I’m letting life arrive at its own pace."
         )
     ]
@@ -392,10 +387,14 @@ class MockRepository {
             score: .okay,
             userDescription: "Mild drop after a high day. This pattern repeats: strong day → energy rebound → neutral day. Not a problem, just expected."
         ),
-        // skip -5
+        Report(
+            date: Calendar.current.date(byAdding: .day, value: -5, to: Date())!,
+            score: .okay,
+            userDescription: "A lot of work today, but overall okay."
+        ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -4, to: Date())!,
-            score: .fair,
+            score: .bad,
             userDescription: "Irritability increased. Probably due to workload + lack of quiet time. Need a controlled evening routine."
         ),
         Report(
@@ -405,12 +404,12 @@ class MockRepository {
         ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -2, to: Date())!,
-            score: .good,
+            score: .okay,
             userDescription: "Good balance. I managed energy well and didn’t overextend. Sleep quality improved slightly."
         ),
         Report(
             date: Calendar.current.date(byAdding: .day, value: -1, to: Date())!,
-            score: .good,
+            score: .okay,
             userDescription: "Stable positive mood. Fewer intrusive thoughts. I felt more confident about long-term direction."
         ),
         Report(
