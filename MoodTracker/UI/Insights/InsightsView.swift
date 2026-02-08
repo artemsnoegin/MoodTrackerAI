@@ -14,7 +14,7 @@ struct InsightsView: View {
         ScrollView {
             VStack {
                 InsightViewCell(title: "Summary") {
-                    SummaryChartView(summary: viewModel.summary())
+                    SummaryView(summary: viewModel.summary())
                 }
                 
                 InsightViewCell(title: "Trends") {
