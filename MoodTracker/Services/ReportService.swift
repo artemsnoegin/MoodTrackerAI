@@ -23,53 +23,26 @@ class ReportService {
         repository.save(report)
     }
 
-    func getLatestReports(count: Int = 7) -> [Report] {
+    func getLatestReports(count: Int = 7, reversed: Bool = false) -> [Report] {
         
         let now = Date()
         guard let startDate = calendar.date(byAdding: .day, value: -count, to: now)
         else { return [] }
         
-        var dates = [now]
-        dates += Array(
-            calendar.dates(
-                byAdding: .day,
-                startingAt: startDate,
-                in: startDate..<now)
-            .reversed()
-        )
-        
-        let reports = repository.fetchReports(
-            sortBy: [SortDescriptor(\.date)],
-            filterBy: #Predicate { $0.date >= startDate && $0.date <= now }
-        )        
-        var reportsMap = [Date:Report]()
-        
-        for report in reports {
-            let normalized = calendar.startOfDay(for: report.date)
-            reportsMap[normalized] = report
-        }
-        
-        var result = [Report]()
-        
-        for date in dates {
-            let normalized = calendar.startOfDay(for: date)
-            
-            if let report = reportsMap[normalized] {
-                result.append(report)
-            } else {
-                result.append(Report(date: date))
-            }
-        }
-        
-        return result
+        return getReports(from: startDate, to: now, reversed: reversed)
     }
     
-    func getReports(from start: Date, to end: Date) -> [Report] {
-        let dates = [start] + Array(calendar.dates(
+    func getReports(from start: Date, to end: Date, reversed: Bool = false) -> [Report] {
+        var dates = Array(calendar.dates(
             byAdding: .day,
             startingAt: start,
             in: start..<end)
         )
+        dates.append(end)
+        
+        if reversed {
+            dates.sort(by: >)
+        }
         
         let reports = repository.fetchReports(
             sortBy: [SortDescriptor(\.date)],

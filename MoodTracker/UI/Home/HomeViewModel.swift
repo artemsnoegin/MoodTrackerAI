@@ -31,7 +31,7 @@ class HomeViewModel: ObservableObject {
     }
 
     func loadReports() {
-        reports = reportService.getLatestReports()
+        reports = reportService.getLatestReports(reversed: true)
     }
     
     func updateReport() {
