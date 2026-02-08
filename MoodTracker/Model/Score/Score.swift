@@ -13,4 +13,11 @@ enum Score: Double, CaseIterable, Equatable, Codable {
     case okay = 0
     case good = 0.5
     case great = 1
+    
+    static var range: Double {
+        let values = Score.allCases.map { $0.rawValue }
+        guard !values.isEmpty else { return 0 }
+        
+        return Double(abs(values[0]) + values[values.count - 1])
+    }
 }

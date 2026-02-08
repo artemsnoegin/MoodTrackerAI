@@ -62,7 +62,7 @@ struct TrendsView: View {
 #Preview {
     let repo = MockRepository(type: .burnoutRU)
     let rs = ReportService(repository: repo)
-    let reports = rs.getLatestReports(count: 14)
+    let reports = rs.getLatestReports(count: 14, reversed: true)
     let trend = Trend(comparing: reports)
     TrendsView(trend: trend)
 }

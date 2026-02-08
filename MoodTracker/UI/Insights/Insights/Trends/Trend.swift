@@ -15,7 +15,7 @@ struct Trend {
     }
     
     var averageChange: Double {
-        average(from: currentScores) - average(from: previousScores)
+        return (currentScores.median - previousScores.median) / Score.range
     }
     
     var averageIcon: String {
@@ -41,7 +41,7 @@ struct Trend {
     }
     
     var stabilityChange: Double {
-        volatility(from: previousScores) - volatility(from: currentScores)
+        volatility(from: currentScores) - volatility(from: previousScores)
     }
     
     var stabilityIcon: String {
@@ -62,7 +62,7 @@ struct Trend {
         }else if stabilityChange > 0 {
             return "Mood swings increased"
         } else {
-            return "Mood swings stabilized"
+            return "Mood swings decreased"
         }
     }
     
@@ -92,24 +92,6 @@ struct Trend {
         }
     }
     
-    private func percentage(for value: Double) -> String {
-        value.formatted(
-            .percent
-                .sign(strategy: .always())
-                .precision(.fractionLength(0...1))
-        )
-    }
-    
-    private func icon(for value: Double, inverted: Bool = false) -> String {
-        if value > 0 {
-            return "arrow.up"
-        } else if value < 0 {
-            return "arrow.down"
-        } else {
-            return "minus"
-        }
-    }
-    
     private var currentReports: [Report] {
         let mid = reports.count / 2
         return Array(reports[..<mid])
@@ -127,20 +109,32 @@ struct Trend {
     private var previousScores: [Double] {
         previousReports.compactMap { $0.score?.rawValue }
     }
-
-    private func average(from values: [Double]) -> Double {
-        guard !values.isEmpty else { return 0 }
-        
-        return values.reduce(0, +) / Double(values.count)
-    }
     
     private func volatility(from values: [Double]) -> Double {
         guard !values.isEmpty else { return 0 }
         
         let variance = values
-            .map { pow($0 - average(from: values), 2) }
+            .map { pow($0 - values.median, 2) }
             .reduce(0, +) / Double(values.count)
         
         return sqrt(variance)
+    }
+    
+    private func percentage(for value: Double) -> String {
+        value.formatted(
+            .percent
+                .sign(strategy: .always())
+                .precision(.fractionLength(0))
+        )
+    }
+    
+    private func icon(for value: Double, inverted: Bool = false) -> String {
+        if value > 0 {
+            return "arrow.up"
+        } else if value < 0 {
+            return "arrow.down"
+        } else {
+            return "minus"
+        }
     }
 }
