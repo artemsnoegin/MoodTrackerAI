@@ -52,14 +52,13 @@ struct HomeView: View {
             }
         }
         
-        ToolbarSpacer()
-        
-        ToolbarItem {
-            Button("", systemImage: "person.fill") {
-                viewModel.showUserSettings()
-            }
-            .disabled(true)
-        }
+//        ToolbarSpacer()
+//        
+//        ToolbarItem {
+//            Button("", systemImage: "person.fill") {
+//                viewModel.showUserSettings()
+//            }
+//        }
     }
 }
 

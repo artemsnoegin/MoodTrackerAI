@@ -8,8 +8,6 @@
 import Foundation
 import SwiftData
 
-// TODO: Report Service async
-
 class ReportService {
     let repository: Repository
     
