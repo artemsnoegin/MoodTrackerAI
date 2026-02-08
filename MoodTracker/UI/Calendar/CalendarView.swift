@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @StateObject var viewModel = CalendarViewModel()
+    @ObservedObject var viewModel: CalendarViewModel
     
     var body: some View {
         ScrollView {
@@ -69,8 +69,9 @@ struct CalendarView: View {
 }
 
 #Preview {
+    let coordinator = Coordinator()
     NavigationStack {
-        CalendarView()
+        CalendarView(viewModel: coordinator.calendarViewModel)
     }
 }
 

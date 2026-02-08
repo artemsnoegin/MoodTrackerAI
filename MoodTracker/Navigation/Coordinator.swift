@@ -28,8 +28,12 @@ class Coordinator: ObservableObject {
         return vm
     }()
     
+    lazy var calendarViewModel = {
+        return CalendarViewModel(reportService: reportService)
+    }()
+    
     private lazy var reportService: ReportService = {
-        let repository: Repository = SwiftDataRepository()
+        let repository: Repository = MockRepository(type: .burnoutRU)
         return ReportService(repository: repository)
     }()
     

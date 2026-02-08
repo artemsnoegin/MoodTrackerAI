@@ -19,7 +19,7 @@ struct NavigationRootView<Root: View>: View {
                     case .editReportView(let page):
                         EditReportView(page: page)
                     case .calendar:
-                        CalendarView()
+                        CalendarView(viewModel: coordinator.calendarViewModel)
                     case .insights:
                         InsightsView(viewModel: coordinator.insightsViewModel)
                     case .userSettings:

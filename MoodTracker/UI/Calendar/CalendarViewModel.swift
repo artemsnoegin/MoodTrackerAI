@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class CalendarViewModel: ObservableObject {
-    let reportService = ReportService(repository: MockRepository(type: .analyticalEN))
+    let reportService: ReportService
     var today: Date = .now
     
     var monthOffsetValue = 0
@@ -19,7 +19,8 @@ class CalendarViewModel: ObservableObject {
     @Published var canGoForward = false
     @Published var selection: Report?
     
-    init() {
+    init(reportService: ReportService) {
+        self.reportService = reportService
         loadReports()
     }
     
@@ -37,8 +38,6 @@ class CalendarViewModel: ObservableObject {
         self.reports = reports
         
         today = Calendar.current.date(byAdding: .month, value: monthOffsetValue, to: reports.last!.date)!
-        
-        
     }
     
     func nextMonth() {
