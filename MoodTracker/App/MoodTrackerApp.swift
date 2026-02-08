@@ -10,7 +10,9 @@ import SwiftData
 
 @main
 struct MoodTrackerApp: App {
-    @StateObject private var coordinator = Coordinator(repository: SwiftDataRepository())
+    @StateObject private var coordinator = Coordinator(
+        repository: SwiftDataRepository()
+    )
     
     var body: some Scene {
         WindowGroup {
