@@ -36,4 +36,8 @@ class InsightsViewModel: ObservableObject {
     func trend() -> Trend {
         Trend(comparing: reports)
     }
+    
+    func wordCloud() -> Cloud {
+        Cloud(reports: reports)
+    }
 }

@@ -20,6 +20,10 @@ struct InsightsView: View {
                 InsightViewCell(title: "Trends") {
                     TrendsView(trend: viewModel.trend())
                 }
+                
+                InsightViewCell(title: "Word Cloud") {
+                    WordCloudView(cloud: viewModel.wordCloud())
+                }
             }
         }
         .navigationTitle("Insights")
