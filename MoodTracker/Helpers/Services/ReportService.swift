@@ -36,7 +36,7 @@ class ReportService {
             startingAt: start,
             in: start..<end)
         )
-        dates.append(start)
+        dates.append(reversed ? end : start)
         
         dates.sort(by: <)
         
