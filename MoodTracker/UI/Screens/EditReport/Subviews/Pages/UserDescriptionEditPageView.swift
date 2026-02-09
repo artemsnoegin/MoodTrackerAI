@@ -48,8 +48,8 @@ struct UserDescriptionEditPageView: View {
                     } label: {
                         Image(systemName: "keyboard.chevron.compact.down")
                             .padding()
-                            .glassEffect(.clear.tint(.primary).interactive())
-                            .foregroundStyle(.background)
+                            .foregroundStyle(.controlForeground)
+                            .glassEffect(.regular.tint(.controlBackground).interactive())
                     }
                 }
             }

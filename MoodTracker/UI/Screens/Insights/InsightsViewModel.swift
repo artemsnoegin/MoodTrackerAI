@@ -25,7 +25,7 @@ class InsightsViewModel: ObservableObject {
     }
     
     func loadReports() {
-        reports = reportService.getLatestReports(count: 14)
+        reports = reportService.getLatestReports(count: 14, reversed: true)
     }
     
     func summary() -> Summary {

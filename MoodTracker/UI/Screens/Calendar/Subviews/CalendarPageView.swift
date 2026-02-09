@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarPageView: View {
-    let labels: [String] = ["Mon", "Tue", "Wen", "Thu", "Fri", "Sat", "Sun"]
+    let labels: [String]
     let month: Date
     let reports: [Report]
     @Binding var selection: Report?

@@ -13,7 +13,8 @@ struct CalendarView: View {
     var body: some View {
         ScrollView {
             VStack {
-                CalendarPageView(month: viewModel.today,
+                CalendarPageView(labels: viewModel.labels,
+                                 month: viewModel.today,
                                  reports: viewModel.reports,
                                  selection: $viewModel.selection)
                 

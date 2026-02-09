@@ -36,14 +36,16 @@ class ReportService {
             startingAt: start,
             in: start..<end)
         )
-        dates.append(end)
+        dates.append(start)
+        
+        dates.sort(by: <)
         
         if reversed {
             dates.sort(by: >)
         }
         
         let reports = repository.fetchReports(
-            sortBy: [SortDescriptor(\.date)],
+            sortBy: [SortDescriptor(\.date, order: reversed ? .reverse : .forward)],
             filterBy: #Predicate { $0.date >= start && $0.date <= end }
         )
         var reportsMap = [Date:Report]()

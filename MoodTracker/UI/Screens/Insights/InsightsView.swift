@@ -28,6 +28,7 @@ struct InsightsView: View {
         }
         .navigationTitle("Insights")
         .background(backgroundContent)
+        .scrollIndicators(.hidden)
         .onAppear(perform: viewModel.loadReports)
     }
     

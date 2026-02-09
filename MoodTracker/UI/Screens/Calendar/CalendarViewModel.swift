@@ -14,6 +14,10 @@ class CalendarViewModel: ObservableObject {
     
     var monthOffsetValue = 0
     
+    var labels: [String] {
+        ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+    }
+    
     @Published var reports: [Report] = []
     @Published var missing: [String] = []
     @Published var canGoForward = false
