@@ -65,6 +65,12 @@
     <td style="border: none;"><img src="docs/screenshot_3.png" height="400" alt="Скриншот решения3"></td>
     <td style="border: none;"><img src="docs/screenshot_4.png" height="400" alt="Скриншот решения4"></td>
   </tr>
+  <tr>
+    <td style="border: none;"><img src="docs/screenshot_5.png" height="400" alt="Скриншот решения5"></td>
+    <td style="border: none;"><img src="docs/screenshot_6.png" height="400" alt="Скриншот решения6"></td>
+    <td style="border: none;"><img src="docs/screenshot_7.png" height="400" alt="Скриншот решения7"></td>
+    <td style="border: none;"><img src="docs/screenshot_8.png" height="400" alt="Скриншот решения8"></td>
+  </tr>
 </table>
 
 
